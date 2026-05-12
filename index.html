@@ -1,0 +1,1032 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Booker Creek Arts Festival 2026 · St. Petersburg, FL</title>
+<meta name="description" content="Florida's newest immersive arts festival, flowing through the EDGE District November 12–15, 2026.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caprasimo&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,700&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --sage:        #7A9B8E;
+    --sage-deep:   #5E7E72;
+    --sage-soft:   #A4BDB1;
+    --lime:        #C5D639;
+    --lime-bright: #D4E142;
+    --peach:       #F0AE7E;
+    --peach-warm:  #E8946A;
+    --cream:       #F7F1E0;
+    --cream-warm:  #FAF4E4;
+    --paper:       #FFFCF2;
+    --ink:         #243530;
+    --ink-soft:    #4A5C56;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'DM Sans', sans-serif;
+    color: var(--ink);
+    background: var(--cream);
+    overflow-x: hidden;
+    line-height: 1.5;
+    position: relative;
+  }
+
+  /* Subtle paper grain */
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 1;
+    opacity: 0.5;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.5 0 0 0 0 0.45 0 0 0 0 0.3 0 0 0 0.12 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+    mix-blend-mode: multiply;
+  }
+
+  /* ============ FLOWING CREEK (fixed, full viewport) ============ */
+  .creek {
+    position: fixed;
+    inset: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 0;
+    pointer-events: none;
+    overflow: hidden;
+  }
+  .creek svg {
+    position: absolute;
+    top: -10%;
+    left: -10%;
+    width: 130%;
+    height: 130%;
+    display: block;
+  }
+  .creek-path {
+    fill: none;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    filter: blur(0.5px);
+  }
+  .stream-1 { stroke: var(--sage);  stroke-width: 32; animation: flow 22s linear infinite, drift1 16s ease-in-out infinite alternate; opacity: 0.18; }
+  .stream-3 { stroke: var(--lime);  stroke-width: 20; animation: flow 26s linear infinite, drift1 19s ease-in-out infinite alternate; opacity: 0.16; }
+  .stream-4 { stroke: var(--peach); stroke-width: 16; animation: flow 20s linear infinite reverse, drift2 15s ease-in-out infinite alternate; opacity: 0.18; }
+
+  @keyframes flow {
+    from { stroke-dashoffset: 0; }
+    to   { stroke-dashoffset: -2400; }
+  }
+  @keyframes drift1 {
+    from { transform: translate(0, 0)    scale(1); }
+    to   { transform: translate(2%, -1%) scale(1.02); }
+  }
+  @keyframes drift2 {
+    from { transform: translate(0, 0)     scale(1); }
+    to   { transform: translate(-1.5%, 2%) scale(1.01); }
+  }
+
+  /* Content sits above creek */
+  .page { position: relative; z-index: 2; }
+
+  /* ============ NAV ============ */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 50;
+    padding: 22px 48px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    background: rgba(247, 241, 224, 0.55);
+    border-bottom: 1px solid rgba(36, 53, 48, 0.06);
+  }
+  nav .brand {
+    font-family: 'Caprasimo', serif;
+    font-size: 22px;
+    color: var(--sage-deep);
+    letter-spacing: 0.5px;
+  }
+  nav .brand span { color: var(--peach-warm); }
+  nav ul {
+    display: flex;
+    gap: 34px;
+    list-style: none;
+  }
+  nav ul a {
+    text-decoration: none;
+    color: var(--ink);
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0.6px;
+    text-transform: uppercase;
+    position: relative;
+    transition: color 0.3s;
+  }
+  nav ul a::after {
+    content: "";
+    position: absolute;
+    left: 0; bottom: -6px;
+    width: 0; height: 2px;
+    background: var(--peach-warm);
+    transition: width 0.3s ease;
+  }
+  nav ul a:hover { color: var(--sage-deep); }
+  nav ul a:hover::after { width: 100%; }
+  .nav-cta {
+    background: var(--ink);
+    color: var(--cream);
+    padding: 10px 22px;
+    border-radius: 999px;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    transition: all 0.3s;
+  }
+  .nav-cta:hover { background: var(--peach-warm); color: var(--ink); }
+
+  /* ============ HERO ============ */
+  .hero {
+    min-height: 100vh;
+    padding: 160px 48px 80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+  }
+  .hero-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--sage-deep);
+    margin-bottom: 28px;
+    opacity: 0;
+    animation: rise 1s 0.2s ease-out forwards;
+  }
+  .hero-eyebrow::before {
+    content: "";
+    width: 40px; height: 2px;
+    background: var(--peach-warm);
+  }
+  .hero-title {
+    font-family: 'Caprasimo', serif;
+    font-weight: 400;
+    font-size: clamp(60px, 11vw, 180px);
+    line-height: 0.92;
+    color: var(--ink);
+    letter-spacing: -2px;
+    max-width: 1200px;
+  }
+  .hero-title .word {
+    display: inline-block;
+    opacity: 0;
+    transform: translateY(40px) rotate(-2deg);
+    animation: word-rise 0.9s ease-out forwards;
+  }
+  .hero-title .word:nth-child(1) { animation-delay: 0.3s; }
+  .hero-title .word:nth-child(2) { animation-delay: 0.45s; color: var(--sage-deep); }
+  .hero-title .word:nth-child(3) { animation-delay: 0.6s; }
+  .hero-title .word:nth-child(4) { animation-delay: 0.75s; color: var(--peach-warm); font-style: italic; font-family: 'Fraunces', serif; }
+
+  @keyframes word-rise {
+    to { opacity: 1; transform: translateY(0) rotate(0); }
+  }
+  @keyframes rise {
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero-meta {
+    margin-top: 60px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 48px 80px;
+    align-items: flex-end;
+    opacity: 0;
+    animation: rise 1s 1.1s ease-out forwards;
+  }
+  .meta-block .label {
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    margin-bottom: 10px;
+  }
+  .meta-block .value {
+    font-family: 'Fraunces', serif;
+    font-weight: 400;
+    font-size: 28px;
+    color: var(--ink);
+    letter-spacing: -0.3px;
+  }
+  .meta-block .value strong {
+    color: var(--sage-deep);
+    font-weight: 600;
+  }
+  .hero-lead {
+    margin-top: 56px;
+    max-width: 540px;
+    font-family: 'Fraunces', serif;
+    font-size: 22px;
+    font-weight: 300;
+    line-height: 1.4;
+    color: var(--ink-soft);
+    opacity: 0;
+    animation: rise 1s 1.3s ease-out forwards;
+  }
+  .hero-lead em {
+    color: var(--peach-warm);
+    font-style: italic;
+  }
+
+  /* Scroll indicator */
+  .scroll-indicator {
+    position: absolute;
+    bottom: 32px; left: 50%;
+    transform: translateX(-50%);
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    opacity: 0;
+    animation: rise 1s 1.6s ease-out forwards;
+  }
+  .scroll-indicator::after {
+    content: "";
+    width: 1px; height: 50px;
+    background: linear-gradient(to bottom, var(--peach-warm), transparent);
+    animation: scroll-pulse 2s ease-in-out infinite;
+  }
+  @keyframes scroll-pulse {
+    0%, 100% { transform: scaleY(1); opacity: 1; }
+    50% { transform: scaleY(0.5) translateY(20px); opacity: 0.3; }
+  }
+
+  /* ============ SECTION: ABOUT ============ */
+  section { padding: 140px 48px; position: relative; }
+  .section-inner { max-width: 1280px; margin: 0 auto; }
+
+  .about {
+    background: var(--paper);
+    border-top: 1px solid rgba(36, 53, 48, 0.08);
+    border-bottom: 1px solid rgba(36, 53, 48, 0.08);
+  }
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    max-width: 880px;
+    margin: 0 auto;
+    gap: 32px;
+    align-items: start;
+  }
+  .section-tag {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    font-size: 11px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--peach-warm);
+    font-weight: 600;
+    margin-bottom: 28px;
+  }
+  .section-tag::before {
+    content: "";
+    width: 28px; height: 2px;
+    background: var(--peach-warm);
+  }
+  .about h2 {
+    font-family: 'Caprasimo', serif;
+    font-size: clamp(40px, 5.5vw, 72px);
+    line-height: 1;
+    color: var(--ink);
+    letter-spacing: -1.2px;
+    font-weight: 400;
+  }
+  .about h2 em {
+    color: var(--sage-deep);
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-weight: 400;
+  }
+  .about-body p {
+    font-family: 'Fraunces', serif;
+    font-size: 19px;
+    font-weight: 300;
+    line-height: 1.6;
+    color: var(--ink-soft);
+    margin-bottom: 20px;
+  }
+  .about-body p:first-child {
+    font-size: 24px;
+    color: var(--ink);
+    font-weight: 400;
+  }
+  .about-body p:first-child::first-letter {
+    font-family: 'Caprasimo', serif;
+    font-size: 64px;
+    float: left;
+    line-height: 0.85;
+    padding: 6px 12px 0 0;
+    color: var(--peach-warm);
+  }
+
+  /* ============ MARQUEE ============ */
+  .marquee {
+    background: var(--sage-deep);
+    color: var(--cream);
+    padding: 28px 0;
+    overflow: hidden;
+    position: relative;
+    border-top: 1px solid rgba(0,0,0,0.1);
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+  }
+  .marquee-track {
+    display: flex;
+    gap: 60px;
+    animation: marquee 35s linear infinite;
+    white-space: nowrap;
+    width: max-content;
+  }
+  .marquee span {
+    font-family: 'Caprasimo', serif;
+    font-size: 38px;
+    letter-spacing: -0.5px;
+  }
+  .marquee .dot {
+    color: var(--peach);
+    font-size: 32px;
+    align-self: center;
+  }
+  @keyframes marquee {
+    to { transform: translateX(-50%); }
+  }
+
+  /* ============ EXPERIENCE ============ */
+  .experience h2 {
+    font-family: 'Caprasimo', serif;
+    font-size: clamp(48px, 7vw, 96px);
+    line-height: 0.95;
+    color: var(--ink);
+    margin-bottom: 24px;
+    max-width: 900px;
+    letter-spacing: -1.5px;
+    font-weight: 400;
+  }
+  .experience h2 em {
+    color: var(--peach-warm);
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+  }
+  .experience-intro {
+    font-family: 'Fraunces', serif;
+    font-size: 21px;
+    font-weight: 300;
+    color: var(--ink-soft);
+    max-width: 640px;
+    margin-bottom: 80px;
+  }
+  .experience-grid {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 24px;
+  }
+  .exp-card {
+    background: var(--paper);
+    border-radius: 24px;
+    padding: 40px 36px;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.5s;
+    border: 1px solid rgba(36, 53, 48, 0.08);
+    min-height: 280px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .exp-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 20px 50px rgba(36, 53, 48, 0.12);
+  }
+  .exp-card .num {
+    font-family: 'Caprasimo', serif;
+    font-size: 14px;
+    color: var(--peach-warm);
+    letter-spacing: 1px;
+  }
+  .exp-card h3 {
+    font-family: 'Caprasimo', serif;
+    font-size: 32px;
+    line-height: 1;
+    color: var(--ink);
+    margin: 12px 0 14px;
+    font-weight: 400;
+    letter-spacing: -0.5px;
+  }
+  .exp-card p {
+    font-family: 'Fraunces', serif;
+    font-size: 16px;
+    font-weight: 300;
+    color: var(--ink-soft);
+    line-height: 1.5;
+  }
+  .exp-card .icon {
+    width: 56px; height: 56px;
+    margin-bottom: 18px;
+  }
+
+  .exp-card.size-lg { grid-column: span 6; }
+  .exp-card.size-md { grid-column: span 4; }
+  .exp-card.size-sm { grid-column: span 3; }
+
+  .exp-card.tint-sage  { background: var(--sage); color: var(--cream); border-color: transparent; }
+  .exp-card.tint-sage  h3 { color: var(--cream); }
+  .exp-card.tint-sage  p  { color: rgba(247, 241, 224, 0.85); }
+  .exp-card.tint-sage  .num { color: var(--lime-bright); }
+
+  .exp-card.tint-peach { background: var(--peach); border-color: transparent; }
+  .exp-card.tint-peach .num { color: var(--sage-deep); }
+
+  .exp-card.tint-lime  { background: var(--lime); border-color: transparent; }
+  .exp-card.tint-lime  .num { color: var(--sage-deep); }
+  .exp-card.tint-lime  p { color: var(--ink); }
+
+  /* ============ PRIZE BANNER ============ */
+  .prize {
+    background: var(--ink);
+    color: var(--cream);
+    padding: 160px 48px;
+    position: relative;
+    overflow: hidden;
+  }
+  .prize::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(circle at 20% 30%, rgba(240, 174, 126, 0.18), transparent 40%),
+      radial-gradient(circle at 80% 70%, rgba(197, 214, 57, 0.12), transparent 40%);
+    pointer-events: none;
+  }
+  .prize-content {
+    max-width: 1280px;
+    margin: 0 auto;
+    position: relative;
+    text-align: center;
+  }
+  .prize .section-tag { color: var(--peach); justify-content: center; }
+  .prize .section-tag::before { background: var(--peach); }
+  .prize-amount {
+    font-family: 'Caprasimo', serif;
+    font-size: clamp(120px, 22vw, 320px);
+    line-height: 0.85;
+    letter-spacing: -6px;
+    margin: 30px 0;
+    background: linear-gradient(180deg, var(--peach) 0%, var(--lime-bright) 50%, var(--sage-soft) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    font-weight: 400;
+  }
+  .prize-amount sup {
+    font-size: 0.35em;
+    vertical-align: top;
+    margin-right: 8px;
+    color: var(--peach);
+    -webkit-text-fill-color: var(--peach);
+  }
+  .prize-headline {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(22px, 3vw, 36px);
+    font-weight: 300;
+    max-width: 780px;
+    margin: 0 auto 24px;
+    line-height: 1.3;
+  }
+  .prize-headline em {
+    color: var(--peach);
+    font-style: italic;
+  }
+  .prize-sub {
+    font-size: 15px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: rgba(247, 241, 224, 0.6);
+  }
+
+  /* ============ VISIT ============ */
+  .visit {
+    background: var(--cream-warm);
+  }
+  .visit-grid {
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+  .visit h2 {
+    font-family: 'Caprasimo', serif;
+    font-size: clamp(40px, 5.5vw, 78px);
+    line-height: 0.95;
+    color: var(--ink);
+    letter-spacing: -1.5px;
+    font-weight: 400;
+  }
+  .visit h2 em {
+    color: var(--sage-deep);
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+  }
+  .visit-body {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(24px, 2.6vw, 34px);
+    font-weight: 300;
+    color: var(--ink);
+    line-height: 1.35;
+    margin-top: 28px;
+    letter-spacing: -0.3px;
+  }
+  .visit-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+    margin-top: 48px;
+  }
+  .stat {
+    padding: 28px;
+    background: var(--paper);
+    border-radius: 18px;
+    border: 1px solid rgba(36, 53, 48, 0.08);
+  }
+  .stat .num {
+    font-family: 'Caprasimo', serif;
+    font-size: 56px;
+    color: var(--peach-warm);
+    line-height: 1;
+    letter-spacing: -1.5px;
+    font-weight: 400;
+  }
+  .stat .label {
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--ink-soft);
+    margin-top: 8px;
+  }
+
+  /* Decorative SVG for visit section */
+  .visit-art {
+    position: relative;
+    aspect-ratio: 1;
+    border-radius: 32px;
+    overflow: hidden;
+    background: linear-gradient(135deg, var(--sage) 0%, var(--sage-deep) 100%);
+  }
+  .visit-art svg {
+    width: 100%; height: 100%;
+    display: block;
+  }
+
+  /* ============ CTA ============ */
+  .cta {
+    background: var(--sage-deep);
+    color: var(--cream);
+    padding: 160px 48px 80px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .cta h2 {
+    font-family: 'Caprasimo', serif;
+    font-size: clamp(56px, 9vw, 140px);
+    line-height: 0.9;
+    color: var(--cream);
+    letter-spacing: -2px;
+    max-width: 1100px;
+    margin: 0 auto 40px;
+    font-weight: 400;
+  }
+  .cta h2 em {
+    color: var(--peach);
+    font-style: italic;
+    font-family: 'Fraunces', serif;
+  }
+  .cta-buttons {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 40px;
+  }
+  .btn {
+    padding: 18px 36px;
+    border-radius: 999px;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: all 0.3s;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    border: none;
+  }
+  .btn-primary {
+    background: var(--peach);
+    color: var(--ink);
+  }
+  .btn-primary:hover {
+    background: var(--lime-bright);
+    transform: translateY(-2px);
+  }
+  .btn-secondary {
+    background: transparent;
+    color: var(--cream);
+    border: 1.5px solid var(--cream);
+  }
+  .btn-secondary:hover {
+    background: var(--cream);
+    color: var(--ink);
+  }
+
+  footer {
+    margin-top: 100px;
+    padding-top: 40px;
+    border-top: 1px solid rgba(247, 241, 224, 0.18);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    font-size: 13px;
+    color: rgba(247, 241, 224, 0.55);
+    letter-spacing: 0.5px;
+  }
+  footer a {
+    color: rgba(247, 241, 224, 0.55);
+    text-decoration: none;
+    margin: 0 14px;
+  }
+  footer a:hover { color: var(--peach); }
+
+  /* Reveal on scroll */
+  .reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 1s cubic-bezier(0.2, 0.8, 0.2, 1), transform 1s cubic-bezier(0.2, 0.8, 0.2, 1);
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ============ RESPONSIVE ============ */
+  @media (max-width: 1024px) {
+    .about-grid { grid-template-columns: 1fr; gap: 40px; }
+    .visit-grid { grid-template-columns: 1fr; gap: 60px; }
+    .exp-card.size-lg,
+    .exp-card.size-md,
+    .exp-card.size-sm { grid-column: span 6; }
+  }
+  @media (max-width: 720px) {
+    nav { padding: 18px 24px; }
+    nav ul { display: none; }
+    section, .hero { padding-left: 24px; padding-right: 24px; }
+    .hero { padding-top: 130px; }
+    .hero-meta { gap: 32px; }
+    .meta-block .value { font-size: 22px; }
+    .experience-grid { grid-template-columns: 1fr; }
+    .exp-card.size-lg,
+    .exp-card.size-md,
+    .exp-card.size-sm { grid-column: span 1; }
+    .visit-stats { grid-template-columns: 1fr; }
+    .marquee span { font-size: 28px; }
+    .cta { padding: 100px 24px 60px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ ANIMATED CREEK BACKGROUND ============ -->
+<div class="creek" aria-hidden="true">
+  <svg viewBox="0 0 1400 1000" preserveAspectRatio="xMidYMid slice">
+    <!-- Sage current -->
+    <path class="creek-path stream-1"
+          d="M -100 220 C 220 160, 380 380, 580 320 S 920 180, 1100 320 S 1400 440, 1600 380"
+          stroke-dasharray="50 35"/>
+
+    <!-- Lime stream -->
+    <path class="creek-path stream-3"
+          d="M -100 560 C 240 480, 420 700, 620 640 S 960 500, 1140 620 S 1430 720, 1600 660"
+          stroke-dasharray="40 30"/>
+
+    <!-- Peach stream -->
+    <path class="creek-path stream-4"
+          d="M -100 820 C 200 760, 380 940, 580 880 S 920 740, 1100 860 S 1400 960, 1600 900"
+          stroke-dasharray="36 26"/>
+  </svg>
+</div>
+
+<div class="page">
+
+  <!-- ============ NAV ============ -->
+  <nav>
+    <div class="brand">Booker Creek<span>.</span></div>
+    <ul>
+      <li><a href="#about">The Festival</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#prize">Prizes</a></li>
+      <li><a href="#visit">Visit</a></li>
+    </ul>
+    <a href="#cta" class="nav-cta">Get Updates</a>
+  </nav>
+
+  <!-- ============ HERO ============ -->
+  <header class="hero">
+    <div class="hero-eyebrow">Inaugural Festival · St. Petersburg, Florida</div>
+
+    <h1 class="hero-title">
+      <span class="word">Where</span>
+      <span class="word">Art</span>
+      <span class="word">flows</span>
+      <span class="word">downstream.</span>
+    </h1>
+
+    <p class="hero-lead">
+      A four-day immersive arts festival winding through the historic <em>EDGE District</em>, transforming sidewalks, storefronts, and street corners into one walkable living gallery.
+    </p>
+
+    <div class="hero-meta">
+      <div class="meta-block">
+        <div class="label">When</div>
+        <div class="value"><strong>Nov 12–15</strong> · 2026</div>
+      </div>
+      <div class="meta-block">
+        <div class="label">Where</div>
+        <div class="value"><strong>The EDGE District</strong> · St. Pete</div>
+      </div>
+      <div class="meta-block">
+        <div class="label">What</div>
+        <div class="value"><strong>Juried Festival</strong> + Competition</div>
+      </div>
+    </div>
+
+    <div class="scroll-indicator">Follow the current</div>
+  </header>
+
+  <!-- ============ ABOUT ============ -->
+  <section id="about" class="about">
+    <div class="section-inner">
+      <div class="about-grid">
+        <div class="reveal">
+          <div class="section-tag">About the Festival</div>
+        </div>
+        <div class="about-body reveal">
+          <p>Booker Creek Arts Festival is designed to energize Florida artists and celebrate the local businesses within the historic EDGE District — turning four days in November into an immersive cultural getaway.</p>
+          <p>Hundreds of juried Florida artists. Dozens of participating venues. One walkable living gallery where storefronts become showrooms, street corners become stages, and every block reveals something you didn't expect.</p>
+          <p>Beyond the artwork, the festival is built to spark meaningful connections between artists, audiences, and local businesses — highlighting the role of arts and culture in building vibrant communities and inviting visitors to take a lasting piece of Florida's creative spirit home.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ MARQUEE ============ -->
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee-track">
+      <span>Live Murals</span><span class="dot">✿</span>
+      <span>Glass Blowing</span><span class="dot">✿</span>
+      <span>Dance &amp; Music</span><span class="dot">✿</span>
+      <span>Juried Artwork</span><span class="dot">✿</span>
+      <span>People's Choice</span><span class="dot">✿</span>
+      <span>Family Activities</span><span class="dot">✿</span>
+      <span>Live Murals</span><span class="dot">✿</span>
+      <span>Glass Blowing</span><span class="dot">✿</span>
+      <span>Dance &amp; Music</span><span class="dot">✿</span>
+      <span>Juried Artwork</span><span class="dot">✿</span>
+      <span>People's Choice</span><span class="dot">✿</span>
+      <span>Family Activities</span><span class="dot">✿</span>
+    </div>
+  </div>
+
+  <!-- ============ EXPERIENCE ============ -->
+  <section id="experience" class="experience">
+    <div class="section-inner">
+      <div class="reveal">
+        <div class="section-tag">What to Expect</div>
+        <h2>Wander a district <em>made entirely</em> of art.</h2>
+        <p class="experience-intro">From mural painters working in real time to glass artisans shaping molten color, the festival turns the EDGE District into an open studio. Every venue, every block, a new discovery.</p>
+      </div>
+
+      <div class="experience-grid">
+
+        <div class="exp-card size-lg tint-sage reveal">
+          <div>
+            <svg class="icon" viewBox="0 0 56 56" fill="none">
+              <path d="M8 44 C 16 36, 20 30, 28 26 S 42 18, 48 12" stroke="#F0AE7E" stroke-width="3" stroke-linecap="round"/>
+              <circle cx="12" cy="42" r="3" fill="#C5D639"/>
+              <circle cx="46" cy="14" r="3" fill="#C5D639"/>
+              <path d="M14 30 L18 26 L22 30 L26 24" stroke="#C5D639" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+            </svg>
+            <div class="num">— 01 —</div>
+            <h3>Live Mural Painting</h3>
+          </div>
+          <p>Watch hundreds of square feet of fresh paint come alive in real time. Artists transform EDGE District walls into the festival's permanent legacy.</p>
+        </div>
+
+        <div class="exp-card size-md tint-peach reveal">
+          <div>
+            <svg class="icon" viewBox="0 0 56 56" fill="none">
+              <path d="M28 8 C 22 16, 18 22, 18 32 C 18 40, 22 46, 28 48 C 34 46, 38 40, 38 32 C 38 22, 34 16, 28 8 Z" stroke="#243530" stroke-width="2.5" fill="none"/>
+              <circle cx="28" cy="32" r="4" fill="#243530"/>
+            </svg>
+            <div class="num">— 02 —</div>
+            <h3>Glass Blowing</h3>
+          </div>
+          <p>Molten color, open flame, the magic of artisans shaping glass right in front of you.</p>
+        </div>
+
+        <div class="exp-card size-sm tint-lime reveal">
+          <div>
+            <svg class="icon" viewBox="0 0 56 56" fill="none">
+              <circle cx="20" cy="38" r="6" stroke="#243530" stroke-width="2.5" fill="none"/>
+              <circle cx="38" cy="32" r="6" stroke="#243530" stroke-width="2.5" fill="none"/>
+              <path d="M26 38 L38 14 L46 18" stroke="#243530" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+            </svg>
+            <div class="num">— 03 —</div>
+            <h3>Live Music</h3>
+          </div>
+          <p>Local stages, all weekend.</p>
+        </div>
+
+        <div class="exp-card size-sm reveal">
+          <div>
+            <svg class="icon" viewBox="0 0 56 56" fill="none">
+              <circle cx="28" cy="14" r="5" stroke="#7A9B8E" stroke-width="2.5" fill="none"/>
+              <path d="M28 20 L28 36 L20 48 M28 36 L36 48 M22 28 L34 28" stroke="#7A9B8E" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+            </svg>
+            <div class="num">— 04 —</div>
+            <h3>Dance</h3>
+          </div>
+          <p>Performances flowing through the streets.</p>
+        </div>
+
+        <div class="exp-card size-md tint-peach reveal">
+          <div>
+            <svg class="icon" viewBox="0 0 56 56" fill="none">
+              <circle cx="20" cy="20" r="5" fill="#243530"/>
+              <circle cx="38" cy="20" r="4" fill="#243530"/>
+              <circle cx="14" cy="38" r="4" fill="#243530"/>
+              <circle cx="32" cy="40" r="6" fill="#243530"/>
+              <path d="M20 20 L38 20 L32 40 L14 38 Z" stroke="#243530" stroke-width="1.5" fill="none" opacity="0.4"/>
+            </svg>
+            <div class="num">— 05 —</div>
+            <h3>Family &amp; Kids</h3>
+          </div>
+          <p>Hands-on creativity for the youngest collectors in the room.</p>
+        </div>
+
+        <div class="exp-card size-lg reveal">
+          <div>
+            <svg class="icon" viewBox="0 0 56 56" fill="none">
+              <rect x="10" y="14" width="36" height="28" rx="2" stroke="#7A9B8E" stroke-width="2.5" fill="none"/>
+              <path d="M16 32 L22 24 L28 30 L36 20 L42 28" stroke="#C5D639" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+              <circle cx="36" cy="22" r="2" fill="#F0AE7E"/>
+            </svg>
+            <div class="num">— 06 —</div>
+            <h3>Hundreds of Juried Artists</h3>
+          </div>
+          <p>Meet the makers in person. Hear the stories. Take an original Florida work home with you — purchases directly support the artists you'll never forget.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PRIZE ============ -->
+  <section id="prize" class="prize">
+    <div class="prize-content reveal">
+      <div class="section-tag">The Competition</div>
+      <div class="prize-amount"><sup>up to</sup>$50K</div>
+      <p class="prize-headline">
+        in jury-awarded prizes — plus a <em>People's Choice Award</em> voted directly by the visitors walking the streets.
+      </p>
+      <p class="prize-sub">Your vote shapes the festival.</p>
+    </div>
+  </section>
+
+  <!-- ============ VISIT ============ -->
+  <section id="visit" class="visit">
+    <div class="section-inner">
+      <div class="visit-grid">
+        <div class="reveal">
+          <div class="section-tag">A Long Weekend</div>
+          <p class="visit-body">
+            St. Petersburg is the anchor — but the current carries on. Explore Pinellas County's beaches, galleries, and neighborhoods as part of a four-day cultural getaway that you'll be planning long before November and remembering long after.
+          </p>
+          <div class="visit-stats">
+            <div class="stat">
+              <div class="num">4</div>
+              <div class="label">Days of Art</div>
+            </div>
+            <div class="stat">
+              <div class="num">100s</div>
+              <div class="label">of Florida Artists</div>
+            </div>
+            <div class="stat">
+              <div class="num">1</div>
+              <div class="label">Walkable District</div>
+            </div>
+            <div class="stat">
+              <div class="num">∞</div>
+              <div class="label">Reasons to Stay</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="visit-art reveal" aria-hidden="true">
+          <svg viewBox="0 0 400 400" preserveAspectRatio="xMidYMid slice">
+            <path d="M 80 -20 C 60 60, 140 120, 100 200 S 60 320, 120 420" stroke="#F0AE7E" stroke-width="14" fill="none" stroke-linecap="round" stroke-dasharray="30 20">
+              <animate attributeName="stroke-dashoffset" from="0" to="-200" dur="8s" repeatCount="indefinite"/>
+            </path>
+            <path d="M 200 -20 C 240 80, 160 160, 200 240 S 260 340, 220 420" stroke="#C5D639" stroke-width="22" fill="none" stroke-linecap="round" stroke-dasharray="40 25">
+              <animate attributeName="stroke-dashoffset" from="0" to="-260" dur="12s" repeatCount="indefinite"/>
+            </path>
+            <path d="M 320 -20 C 280 80, 360 160, 320 240 S 280 340, 340 420" stroke="#FAF4E4" stroke-width="10" fill="none" stroke-linecap="round" stroke-dasharray="20 16" opacity="0.6">
+              <animate attributeName="stroke-dashoffset" from="0" to="-150" dur="6s" repeatCount="indefinite"/>
+            </path>
+            <path d="M 140 -20 C 180 60, 100 140, 140 220 S 200 340, 160 420" stroke="#FAF4E4" stroke-width="4" fill="none" stroke-linecap="round" stroke-dasharray="8 12" opacity="0.5">
+              <animate attributeName="stroke-dashoffset" from="0" to="-120" dur="5s" repeatCount="indefinite"/>
+            </path>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CTA ============ -->
+  <section id="cta" class="cta">
+    <div class="reveal">
+      <div class="section-tag" style="justify-content:center">Mark Your Calendar</div>
+      <p style="max-width:780px;margin:24px auto 0;font-family:'Fraunces',serif;font-size:clamp(26px, 3.5vw, 42px);font-weight:300;color:var(--cream);line-height:1.3;letter-spacing:-0.3px;">
+        Be the first to know when applications open, when the artist roster drops, and when the schedule goes live. November 12–15, 2026.
+      </p>
+      <div class="cta-buttons">
+        <a class="btn btn-primary" href="#">Get Festival Updates →</a>
+        <a class="btn btn-secondary" href="#">Apply as an Artist</a>
+      </div>
+    </div>
+    <footer>
+      <div>Booker Creek Arts Festival · St. Petersburg, FL · Nov 12–15, 2026</div>
+      <div>
+        <a href="#">Instagram</a>
+        <a href="#">Facebook</a>
+        <a href="#">Press</a>
+        <a href="#">Contact</a>
+      </div>
+    </footer>
+  </section>
+
+</div>
+
+<script>
+  // Reveal on scroll
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: "0px 0px -8% 0px" });
+
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  // Subtle parallax on the creek with scroll
+  const creekSvg = document.querySelector('.creek svg');
+  let raf;
+  window.addEventListener('scroll', () => {
+    cancelAnimationFrame(raf);
+    raf = requestAnimationFrame(() => {
+      const y = window.scrollY * 0.08;
+      creekSvg.style.transform = `translateY(${-y}px)`;
+    });
+  }, { passive: true });
+</script>
+
+</body>
+</html>
